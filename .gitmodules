@@ -1,0 +1,3 @@
+[submodule "empress/deadbeef"]
+	path = empress/deadbeef
+	url = https://github.com/DeaDBeeF-Player/deadbeef
