@@ -3,11 +3,11 @@ extern crate bindgen;
 use std::{env, path::PathBuf};
 
 fn main() {
-    println!("cargo:rerun-if-changed=deadbeef/deadbeef.h");
+    println!("cargo:rerun-if-changed=deadbeef/include/deadbeef/deadbeef.h");
 
     let bindings = bindgen::Builder::default()
-        .header("deadbeef/deadbeef.h")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .header("deadbeef/include/deadbeef/deadbeef.h")
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()
         .expect("Unable to generate DeaDBeeF bindings");
 

@@ -1,3 +1,10 @@
 [workspace]
+resolver = "2"
 members = ["dbplugin", "empress"]
-default-members = ["dbplugin"]
+
+[workspace.dependencies]
+libc = "0.2.153"
+dbus = "0.9.7"
+dbus-tree = "0.9.2"
+glob = "0.3.1"
+bindgen = "0.69.4"
