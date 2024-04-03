@@ -95,14 +95,27 @@ impl SigHandler {
                 println!("DB_EV_DSPCHAINCHANGED: {}, {}, {}", ctx, p1, p2);
             }
             deadbeef::DB_EV_SELCHANGED => {
-                println!("DB_EV_FOCUS_SELECTION: {}, {}, {}", ctx, p1, p2);
+                println!("DB_EV_SELCHANGED: {}, {}, {}", ctx, p1, p2);
             }
             deadbeef::DB_EV_PLUGINSLOADED => {
-                println!("DB_EV_FOCUS_SELECTION: {}, {}, {}", ctx, p1, p2);
+                println!("DB_EV_PLUGINSLOADED: {}, {}, {}", ctx, p1, p2);
             }
             deadbeef::DB_EV_FOCUS_SELECTION => {
                 println!("DB_EV_FOCUS_SELECTION: {}, {}, {}", ctx, p1, p2);
             }
+            deadbeef::DB_EV_PLAYBACK_STATE_DID_CHANGE => {
+                println!("DB_EV_PLAYBACK_STATE_DID_CHANGE: {}, {}, {}", ctx, p1, p2);
+            }
+            deadbeef::DB_EV_PLAY_NEXT_ALBUM => {
+                println!("DB_EV_PLAY_NEXT_ALBUM: {}, {}, {}", ctx, p1, p2);
+            }
+            deadbeef::DB_EV_PLAY_PREV_ALBUM => {
+                println!("DB_EV_PLAY_PREV_ALBUM: {}, {}, {}", ctx, p1, p2);
+            }
+            deadbeef::DB_EV_PLAY_RANDOM_ALBUM => {
+                println!("DB_EV_PLAY_RANDOM_ALBUM: {}, {}, {}", ctx, p1, p2);
+            }
+            // DB_EV_FIRST == DB_EV_SONGCHANGED
             deadbeef::DB_EV_SONGCHANGED => {
                 let event =
                     unsafe { std::ptr::read(ctx as *const deadbeef::ddb_event_trackchange_t) };
@@ -134,7 +147,7 @@ impl SigHandler {
                 println!("cursor moved: {:?}, {}, {}", event, p1, p2);
             }
             _ => {
-                panic!(
+                eprintln!(
                     "received unknown message: id: {}, ctx: {}, p1: {}, p2: {}",
                     id, ctx, p1, p2
                 );

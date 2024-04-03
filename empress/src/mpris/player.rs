@@ -330,9 +330,9 @@ impl Player {
         };
 
         let state = match playback_state {
-            deadbeef::ddb_playback_state_e_DDB_PLAYBACK_STATE_STOPPED => "Stopped",
-            deadbeef::ddb_playback_state_e_DDB_PLAYBACK_STATE_PLAYING => "Playing",
-            deadbeef::ddb_playback_state_e_DDB_PLAYBACK_STATE_PAUSED => "Paused",
+            deadbeef::DDB_PLAYBACK_STATE_STOPPED => "Stopped",
+            deadbeef::DDB_PLAYBACK_STATE_PLAYING => "Playing",
+            deadbeef::DDB_PLAYBACK_STATE_PAUSED => "Paused",
             _ => {
                 return Err(MethodErr::failed(&format!(
                     "invalid playback state: {}",
